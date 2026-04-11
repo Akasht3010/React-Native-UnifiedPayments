@@ -9,22 +9,22 @@ const tabBar = components.tabBar;
 
 const TabLayout = () => {
     const insets = useSafeAreaInsets();
-    const TabIcon = ({focused, icon} : TabIconProps) => {
+    const TabIcon = ({ focused, icon }: TabIconProps) => {
         return (
             <View className="tabs-icon">
                 <View className={clsx('tabs-pill', focused && 'tabs-active')}>
-                    <Image 
-                    source={icon} 
-                    resizeMode="contain"
-                    className="tabs-glyph" 
+                    <Image
+                        source={icon}
+                        resizeMode="contain"
+                        className="tabs-glyph"
                     />
                 </View>
             </View>
         )
     };
     return (
-        <Tabs screenOptions={{ 
-            headerShown: false, 
+        <Tabs screenOptions={{
+            headerShown: false,
             tabBarShowLabel: false,
             tabBarStyle: {
                 position: 'absolute',
@@ -37,7 +37,7 @@ const TabLayout = () => {
                 elevation: 0,
             },
             tabBarItemStyle: {
-                paddingVertical: tabBar.height / 2 - tabBar.iconFrame /  1.6
+                paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6
             },
             tabBarIconStyle: {
                 width: tabBar.iconFrame,
@@ -45,11 +45,11 @@ const TabLayout = () => {
                 alignItems: 'center',
             }
         }}
-        
+
         >
             {tabs.map((tab) => (
-                <Tabs.Screen 
-                    key={tab.name} 
+                <Tabs.Screen
+                    key={tab.name}
                     name={tab.name}
                     options={{
                         title: tab.title,
