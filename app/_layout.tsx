@@ -1,4 +1,5 @@
 import '@/global.css';
+import { SubscriptionsProvider } from '@/lib/subscriptions-context';
 import { ClerkProvider } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
 import { useFonts } from 'expo-font';
@@ -31,11 +32,13 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <Stack screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="(home)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      </Stack>
+      <SubscriptionsProvider>
+        <Stack screenOptions={{ headerShown: false }} >
+          <Stack.Screen name="(home)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        </Stack>
+      </SubscriptionsProvider>
     </ClerkProvider>
   );
 }
